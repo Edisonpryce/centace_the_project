@@ -1,0 +1,496 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme Variables */
+:root {
+  --background-primary: 0 0% 100%;
+  --background-secondary: 0 0% 100%;
+  --background-tertiary: 0 0% 98%;
+  --text-primary: 240 10% 3.9%;
+  --text-secondary: 240 5% 26%;
+  --text-tertiary: 240 3.8% 46.1%;
+  --border-color: 240 5.9% 90%;
+  --accent-color: 221.2 83.2% 53.3%;
+  --accent-bg: 217.2 91.2% 59.8% / 0.1;
+  --shadow-color: 0 0 0 0.05;
+  --card-bg: 0 0% 100%;
+  --card-bg-secondary: 210 40% 96.1%;
+  --card-border: 214.3 31.8% 91.4%;
+}
+
+.dark-theme {
+  --background-primary: 240 10% 3.9%;
+  --background-secondary: 240 7.3% 5%;
+  --background-tertiary: 240 5.9% 10%;
+  --text-primary: 0 0% 98%;
+  --text-secondary: 240 5% 84.9%;
+  --text-tertiary: 240 5% 64.9%;
+  --border-color: 240 3.7% 15.9%;
+  --accent-color: 217.2 91.2% 59.8%;
+  --accent-bg: 217.2 91.2% 59.8% / 0.2;
+  --shadow-color: 0 0 0 0.3;
+  --card-bg: 240 7.3% 5%;
+  --card-bg-secondary: 240 5.9% 10%;
+  --card-border: 240 3.7% 15.9%;
+}
+
+/* Theme utility classes */
+.theme-bg-primary {
+  background-color: hsl(var(--background-primary));
+}
+
+.theme-bg-secondary {
+  background-color: hsl(var(--background-secondary));
+}
+
+.theme-bg-tertiary {
+  background-color: hsl(var(--background-tertiary));
+}
+
+.theme-text-primary {
+  color: hsl(var(--text-primary));
+}
+
+.theme-text-secondary {
+  color: hsl(var(--text-secondary));
+}
+
+.theme-text-tertiary {
+  color: hsl(var(--text-tertiary));
+}
+
+.theme-border {
+  border-color: hsl(var(--border-color));
+}
+
+.theme-accent {
+  color: hsl(var(--accent-color));
+}
+
+.theme-accent-bg {
+  background-color: hsl(var(--accent-bg));
+}
+
+.theme-shadow {
+  box-shadow: 0 4px 12px rgba(var(--shadow-color));
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Default to dark theme */
+  html {
+    @apply dark;
+  }
+
+  .dark body {
+    background-color: #0d1117;
+    color: white;
+  }
+
+  .light body {
+    background-color: white;
+    color: #1a1a1a;
+  }
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
+
+/* Light theme specific styles */
+html.light,
+body.light-theme {
+  background-color: white;
+  color: #1a1a1a;
+}
+
+/* Dark theme specific styles */
+html.dark,
+body.dark-theme {
+  background-color: #0d1117;
+  color: white;
+}
+
+/* Theme transition styles */
+html.light,
+html.dark,
+body.light-theme,
+body.dark-theme,
+* {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, fill 0.5s ease,
+    stroke 0.5s ease, opacity 0.5s ease;
+}
+
+/* Prevent transitions on page load */
+.no-transitions * {
+  transition: none !important;
+}
+
+/* Add specific transitions for common UI elements */
+button,
+a,
+input,
+select,
+textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s
+    ease;
+}
+
+/* Add transitions for cards and containers */
+.card,
+.container,
+section,
+header,
+footer,
+nav,
+aside {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Add transitions for SVG elements */
+svg,
+path,
+circle,
+rect {
+  transition: fill 0.5s ease, stroke 0.5s ease, opacity 0.5s ease;
+}
+
+/* Force light mode styles */
+html.light .force-light,
+body.light-theme .force-light {
+  background-color: white !important;
+  color: #1a1a1a !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Force dark mode styles */
+html.dark .force-dark,
+body.dark-theme .force-dark {
+  background-color: #0d1117 !important;
+  color: white !important;
+  border-color: #1f2937 !important;
+}
+
+/* Card styling for light/dark mode */
+.card {
+  @apply rounded-lg overflow-hidden;
+  background-color: hsl(var(--card-bg));
+  border: 1px solid hsl(var(--card-border));
+}
+
+.card-secondary {
+  @apply rounded-lg overflow-hidden;
+  background-color: hsl(var(--card-bg-secondary));
+  border: 1px solid hsl(var(--card-border));
+}
+
+/* Light mode specific overrides */
+html.light .bg-dark-only,
+body.light-theme .bg-dark-only {
+  @apply bg-white text-gray-900;
+}
+
+html.light .text-dark-only,
+body.light-theme .text-dark-only {
+  @apply text-gray-900;
+}
+
+/* Dark mode specific overrides */
+html.dark .bg-light-only,
+body.dark-theme .bg-light-only {
+  @apply bg-gray-800 text-white;
+}
+
+html.dark .text-light-only,
+body.dark-theme .text-light-only {
+  @apply text-white;
+}
+
+/* RTL Support */
+html[dir="rtl"] * {
+  text-align: right;
+}
+
+/* RTL specific utility classes */
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+}
+
+/* RTL specific margin and padding adjustments */
+html[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+html[dir="rtl"] .ml-1,
+html[dir="rtl"] .ml-2,
+html[dir="rtl"] .ml-3,
+html[dir="rtl"] .ml-4,
+html[dir="rtl"] .ml-5,
+html[dir="rtl"] .ml-6,
+html[dir="rtl"] .ml-8,
+html[dir="rtl"] .ml-10,
+html[dir="rtl"] .ml-12 {
+  margin-left: 0;
+}
+
+html[dir="rtl"] .mr-1,
+html[dir="rtl"] .mr-2,
+html[dir="rtl"] .mr-3,
+html[dir="rtl"] .mr-4,
+html[dir="rtl"] .mr-5,
+html[dir="rtl"] .mr-6,
+html[dir="rtl"] .mr-8,
+html[dir="rtl"] .mr-10,
+html[dir="rtl"] .mr-12 {
+  margin-right: 0;
+}
+
+html[dir="rtl"] .pl-1,
+html[dir="rtl"] .pl-2,
+html[dir="rtl"] .pl-3,
+html[dir="rtl"] .pl-4,
+html[dir="rtl"] .pl-5,
+html[dir="rtl"] .pl-6,
+html[dir="rtl"] .pl-8,
+html[dir="rtl"] .pl-10,
+html[dir="rtl"] .pl-12 {
+  padding-left: 0;
+}
+
+html[dir="rtl"] .pr-1,
+html[dir="rtl"] .pr-2,
+html[dir="rtl"] .pr-3,
+html[dir="rtl"] .pr-4,
+html[dir="rtl"] .pr-5,
+html[dir="rtl"] .pr-6,
+html[dir="rtl"] .pr-8,
+html[dir="rtl"] .pr-10,
+html[dir="rtl"] .pr-12 {
+  padding-right: 0;
+}
+
+/* RTL specific flexbox adjustments */
+html[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
+
+html[dir="rtl"] .justify-end {
+  justify-content: flex-start;
+}
+
+/* RTL specific border adjustments */
+html[dir="rtl"] .border-l {
+  border-left: none;
+  border-right: 1px solid;
+}
+
+html[dir="rtl"] .border-r {
+  border-right: none;
+  border-left: 1px solid;
+}
+
+/* RTL specific rounded corners */
+html[dir="rtl"] .rounded-l-md {
+  border-radius: 0;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+html[dir="rtl"] .rounded-r-md {
+  border-radius: 0;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* RTL Font family for Arabic */
+html[dir="rtl"] body {
+  font-family: "Noto Sans Arabic", "Noto Kufi Arabic", sans-serif;
+}
+
+/* RTL dropdown positioning */
+html[dir="rtl"] .right-0 {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .left-0 {
+  left: auto;
+  right: 0;
+}
+
+/* RTL specific icon adjustments */
+html[dir="rtl"] .rtl-rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* RTL specific grid adjustments */
+html[dir="rtl"] .grid-cols-2 > *:first-child {
+  grid-column: 2;
+}
+
+html[dir="rtl"] .grid-cols-2 > *:last-child {
+  grid-column: 1;
+}
+
+/* RTL specific animation adjustments */
+@keyframes rtl-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+html[dir="rtl"] .animate-slide-in {
+  animation-name: rtl-slide-in;
+}
+
+/* Real-time notification styles */
+.highlight-update {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Connection status indicator */
+.connection-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.connection-status.connected {
+  background-color: #10b981;
+}
+
+.connection-status.connecting {
+  background-color: #f59e0b;
+  animation: pulse 1.5s infinite;
+}
+
+.connection-status.disconnected {
+  background-color: #ef4444;
+}
